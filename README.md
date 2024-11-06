@@ -37,8 +37,7 @@ The objective of the game is to reach a score of 10 before your opponent. Each t
 
 # File Structure
 pong_game.py - Main game code including game setup, event handling, animations, and main game loop.
-Contributors
-This project was developed collaboratively by five contributors:
+# Contributors
 
 member 1 - Setup and Initialization
 member 2 - Game Elements and Ball Animation
