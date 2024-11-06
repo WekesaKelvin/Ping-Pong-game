@@ -1,36 +1,50 @@
-# Ping-Pong-game
-Pong Game
-Overview
-Pong is a simple arcade-style game where you control a paddle and try to bounce a ball past your opponent's paddle. The game ends when either the player or the opponent reaches 10 points.
-Requirements
-•	Python 3.x
-•	Pygame library (Install using pip install pygame)
-Game Controls
-•	Player Paddle:
-o	Use Up Arrow to move up.
-o	Use Down Arrow to move down.
-•	Opponent Paddle:
-o	Use W to move up.
-o	Use S to move down.
-Game Rules
-•	The game is played between two paddles (one controlled by the player and the other by the opponent).
-•	The ball bounces off the top and bottom walls and can be hit by either paddle.
-•	When the ball crosses the left or right side of the screen, the player or the opponent scores a point.
-•	The first player to reach 10 points wins the game.
-•	A win message is displayed at the center of the screen when a player reaches 10 points, and the game ends after 2 seconds.
+Table of Contents
+Installation
 How to Run
-1.	Install Python 3.x and Pygame.
-2.	Download the project files and open the terminal/command prompt in the project directory.
-3.	Run the game with the following command:
+Game Controls
+Gameplay
+File Structure
+Contributors
+Installation
+Prerequisites
+Python 3.6 or higher is required.
+
+Pygame library is required. Install it by running:
+
+bash
+Copy code
+pip install pygame
+How to Run
+Clone this repository:
+
+bash
+Copy code
+git clone <repository_url>
+cd <repository_folder>
+Run the game by executing the following command in your terminal:
+
 bash
 Copy code
 python pong_game.py
-Game Features
-•	Real-time gameplay: The ball moves and bounces based on its speed, and the paddles respond to user input.
-•	Scoring system: The game tracks and displays the score for both the player and the opponent.
-•	Game Over: The game ends when a player reaches 10 points, and a win message is displayed for 2 seconds.
-•	Paddle movement: Both paddles are constrained within the screen boundaries.
-Technologies Used
-•	Python: Programming language used to develop the game.
-•	Pygame: Game development library used to handle graphics, sound, and user input.
+Game Controls
+Player (Right Paddle)
 
+Move Up: Press the UP Arrow Key
+Move Down: Press the DOWN Arrow Key
+Opponent (Left Paddle)
+
+Move Up: Press the W Key
+Move Down: Press the S Key
+Gameplay
+The objective of the game is to reach a score of 10 before your opponent. Each time the ball passes a paddle, the other player scores a point.
+
+File Structure
+pong_game.py - Main game code including game setup, event handling, animations, and main game loop.
+Contributors
+This project was developed collaboratively by five contributors:
+
+Dennis 1 - Setup and Initialization
+Bahati 2 - Game Elements and Ball Animation
+Kelvin 3 - Paddle Animation and Ball Reset
+Stella 4 - Input Handling and Score Display
+Shaddy 5 - Main Game Loop and Game Over Condition
