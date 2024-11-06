@@ -2,82 +2,89 @@ import pygame
 import sys
 import time
 
-# initializing pygame module
+# initialising pygame module
 pygame.init()
 
-# Set screen dimensions and initialize display
-screen_width = 800
-screen_height = 500
-screen = pygame.display.set_mode((screen_width, screen_height))
-pygame.display.set_caption("Pong")
-
-# Create clock and game font
 clock = pygame.time.Clock()
-game_font = pygame.font.Font("freesansbold.ttf", 32)
 
-# Set initial scores and game colors
+# initialising game scores
 player_score = 0
 opponent_score = 0
-bg_color = pygame.Color("grey12")
-light_grey = (200, 200, 200)
+game_font = pygame.font.Font("freesansbold.ttf", 32)
+
+# Set game over flag
 game_over = False
-# Define game elements
-ball = pygame.Rect(screen_width / 2 - 15, screen_height / 2 - 15, 30, 30)
-player = pygame.Rect(screen_width - 20, screen_height / 2 - 70, 10, 140)
-opponent = pygame.Rect(10, screen_height / 2 - 70, 10, 140)
 
-# Define ball speed
-ball_speed_x = 7
-ball_speed_y = 7
-player_speed = 0
-opponent_speed = 0
-
-# Ball movement and collision logic
 def ball_animation():
-    global ball_speed_x, ball_speed_y, player_score, opponent_score
+    global ball_speed_x
+    global ball_speed_y
+    global opponent_score
+    global player_score
+    # making ball move [speed controls]
     ball.x += ball_speed_x
     ball.y += ball_speed_y
 
-    if ball.top <= 0 or ball.bottom >= screen_height:
+    # making the ball to bounce back
+    if (ball.top <= 0 or ball.bottom >= screen_height):
         ball_speed_y *= -1
+    if (ball.right >= screen_width or ball.left <= 0):
 
-    if ball.right >= screen_width:
-        opponent_score += 1
-        ball_restart()
-    elif ball.left <= 0:
-        player_score += 1
+        if ball.left <= 0:
+            player_score += 1
+        elif ball.right >= screen_width:
+            opponent_score += 1
         ball_restart()
 
-    if ball.colliderect(player) or ball.colliderect(opponent):
+    if (ball.colliderect(player) or ball.colliderect(opponent) or player.colliderect(ball) or opponent.colliderect(
+            ball)):
         ball_speed_x *= -1
-# Player paddle movement restriction
+
+
 def player_animation():
+    # constrainting player location
     if player.top <= 0:
         player.top = 0
     if player.bottom >= screen_height:
         player.bottom = screen_height
 
-# Opponent paddle movement restriction
+
 def opponent_animation():
+    # constrainting player location
     if opponent.top <= 0:
         opponent.top = 0
     if opponent.bottom >= screen_height:
         opponent.bottom = screen_height
 
-# Reset ball to center
+
 def ball_restart():
     ball.center = (screen_width / 2, screen_height / 2)
 
-# Display scores on screen
-def display_scores():
-    player_text = game_font.render(f"{player_score}", False, light_grey)
-    opponent_text = game_font.render(f"{opponent_score}", False, light_grey)
-    screen.blit(player_text, (420, 8))
-    screen.blit(opponent_text, (360, 8))
 
-# Handle keyboard inputs
-def handle_input():
-    global player_speed, opponent_speed
+# setting up the main window
+screen_width = 800
+screen_height = 500
+
+screen = pygame.display.set_mode((screen_width, screen_height))
+##setting caption for pygame window
+pygame.display.set_caption("Pong")
+
+# Defining Game elements
+ball = pygame.Rect(screen_width / 2 - 15, screen_height / 2 - 15, 30, 30)
+player = pygame.Rect(screen_width - 20, screen_height / 2 - 70, 10, 140)
+opponent = pygame.Rect(10, screen_height / 2 - 70, 10, 140)
+
+# defining ball speed
+ball_speed_x = 7
+ball_speed_y = 7
+# DEFINING PLAYER SPEED
+player_speed = 0
+opponent_speed = 0
+# creating game colours
+bg_color = pygame.Color("grey12")
+light_grey = (200, 200, 200)
+# starting game loop
+while True:
+    # Handling input
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
@@ -91,6 +98,7 @@ def handle_input():
                 opponent_speed += 7
             if event.key == pygame.K_w:
                 opponent_speed -= 7
+
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_DOWN:
                 player_speed -= 7
@@ -100,39 +108,47 @@ def handle_input():
                 opponent_speed -= 7
             if event.key == pygame.K_w:
                 opponent_speed += 7
-                
-# Main game loop
-while True:
-    handle_input()
+
     ball_animation()
+    # moving player up or down
     player.y += player_speed
     opponent.y += opponent_speed
-    player_animation()
-    opponent_animation()
 
+    opponent_animation()
+    player_animation()
+
+    # setting up background color
     screen.fill(bg_color)
+    # drawing game elements
     pygame.draw.rect(screen, light_grey, player)
     pygame.draw.rect(screen, light_grey, opponent)
     pygame.draw.ellipse(screen, light_grey, ball)
     pygame.draw.aaline(screen, light_grey, (screen_width / 2, 0), (screen_width / 2, screen_height))
-    
-    display_scores()
 
-    if player_score == 10:
+    # displaying scores
+    player_text = game_font.render(f"{player_score}", False, light_grey)
+    screen.blit(player_text, (420, 8))
+
+    opponent_text = game_font.render(f"{opponent_score}", False, light_grey)
+    screen.blit(opponent_text, (360, 8))
+
+    # Check if game is over
+    if player_score == 15:
         game_over_text = game_font.render("Player Wins!", False, light_grey)
         screen.blit(game_over_text, (screen_width / 2 - 100, screen_height / 2))
         pygame.display.flip()
-        time.sleep(2)
+        time.sleep(2)  # Wait for 2 seconds to show the win message
         pygame.quit()
         sys.exit()
 
-    elif opponent_score == 10:
+    elif opponent_score == 15:
         game_over_text = game_font.render("Opponent Wins!", False, light_grey)
         screen.blit(game_over_text, (screen_width / 2 - 100, screen_height / 2))
         pygame.display.flip()
-        time.sleep(2)
+        time.sleep(2)  # Wait for 2 seconds to show the win message
         pygame.quit()
         sys.exit()
 
+    # updating the window
     pygame.display.flip()
     clock.tick(60)
