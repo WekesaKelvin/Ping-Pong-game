@@ -50,3 +50,20 @@ def ball_animation():
 
     if ball.colliderect(player) or ball.colliderect(opponent):
         ball_speed_x *= -1
+        # Player paddle movement restriction
+def player_animation():
+    if player.top <= 0:
+        player.top = 0
+    if player.bottom >= screen_height:
+        player.bottom = screen_height
+
+# Opponent paddle movement restriction
+def opponent_animation():
+    if opponent.top <= 0:
+        opponent.top = 0
+    if opponent.bottom >= screen_height:
+        opponent.bottom = screen_height
+
+# Reset ball to center
+def ball_restart():
+    ball.center = (screen_width / 2, screen_height / 2)
