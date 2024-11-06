@@ -68,6 +68,39 @@ def opponent_animation():
 def ball_restart():
     ball.center = (screen_width / 2, screen_height / 2)
 
+# Display scores on screen
+def display_scores():
+    player_text = game_font.render(f"{player_score}", False, light_grey)
+    opponent_text = game_font.render(f"{opponent_score}", False, light_grey)
+    screen.blit(player_text, (420, 8))
+    screen.blit(opponent_text, (360, 8))
+
+# Handle keyboard inputs
+def handle_input():
+    global player_speed, opponent_speed
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            sys.exit()
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_DOWN:
+                player_speed += 7
+            if event.key == pygame.K_UP:
+                player_speed -= 7
+            if event.key == pygame.K_w:
+                opponent_speed += 7
+            if event.key == pygame.K_s:
+                opponent_speed -= 7
+        if event.type == pygame.KEYUP:
+            if event.key == pygame.K_DOWN:
+                player_speed -= 7
+            if event.key == pygame.K_UP:
+                player_speed += 7
+            if event.key == pygame.K_w:
+                opponent_speed -= 7
+            if event.key == pygame.K_s:
+                opponent_speed += 7
+                
 # Main game loop
 while True:
     handle_input()
