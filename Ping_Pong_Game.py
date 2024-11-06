@@ -67,3 +67,39 @@ def opponent_animation():
 # Reset ball to center
 def ball_restart():
     ball.center = (screen_width / 2, screen_height / 2)
+
+# Main game loop
+while True:
+    handle_input()
+    ball_animation()
+    player.y += player_speed
+    opponent.y += opponent_speed
+    player_animation()
+    opponent_animation()
+
+    screen.fill(bg_color)
+    pygame.draw.rect(screen, light_grey, player)
+    pygame.draw.rect(screen, light_grey, opponent)
+    pygame.draw.ellipse(screen, light_grey, ball)
+    pygame.draw.aaline(screen, light_grey, (screen_width / 2, 0), (screen_width / 2, screen_height))
+    
+    display_scores()
+
+    if player_score == 10:
+        game_over_text = game_font.render("Player Wins!", False, light_grey)
+        screen.blit(game_over_text, (screen_width / 2 - 100, screen_height / 2))
+        pygame.display.flip()
+        time.sleep(2)
+        pygame.quit()
+        sys.exit()
+
+    elif opponent_score == 10:
+        game_over_text = game_font.render("Opponent Wins!", False, light_grey)
+        screen.blit(game_over_text, (screen_width / 2 - 100, screen_height / 2))
+        pygame.display.flip()
+        time.sleep(2)
+        pygame.quit()
+        sys.exit()
+
+    pygame.display.flip()
+    clock.tick(60)
