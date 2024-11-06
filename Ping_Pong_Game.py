@@ -49,8 +49,8 @@ def ball_animation():
         ball_restart()
 
     if ball.colliderect(player) or ball.colliderect(opponent):
-        ball_speed_x *= -1
-        # Player paddle movement restriction
+        ball_speed_x *= -1
+# Player paddle movement restriction
 def player_animation():
     if player.top <= 0:
         player.top = 0
@@ -87,18 +87,18 @@ def handle_input():
                 player_speed += 7
             if event.key == pygame.K_UP:
                 player_speed -= 7
-            if event.key == pygame.K_w:
-                opponent_speed += 7
             if event.key == pygame.K_s:
+                opponent_speed += 7
+            if event.key == pygame.K_w:
                 opponent_speed -= 7
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_DOWN:
                 player_speed -= 7
             if event.key == pygame.K_UP:
                 player_speed += 7
-            if event.key == pygame.K_w:
-                opponent_speed -= 7
             if event.key == pygame.K_s:
+                opponent_speed -= 7
+            if event.key == pygame.K_w:
                 opponent_speed += 7
                 
 # Main game loop
