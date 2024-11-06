@@ -94,9 +94,9 @@ while True:
                 player_speed += 7
             if event.key == pygame.K_UP:
                 player_speed -= 7
-            if event.key == pygame.K_w:
-                opponent_speed += 7
             if event.key == pygame.K_s:
+                opponent_speed += 7
+            if event.key == pygame.K_w:
                 opponent_speed -= 7
 
         if event.type == pygame.KEYUP:
@@ -104,9 +104,9 @@ while True:
                 player_speed -= 7
             if event.key == pygame.K_UP:
                 player_speed += 7
-            if event.key == pygame.K_w:
-                opponent_speed -= 7
             if event.key == pygame.K_s:
+                opponent_speed -= 7
+            if event.key == pygame.K_w:
                 opponent_speed += 7
 
     ball_animation()
