@@ -25,7 +25,7 @@ pip install pygame
 Clone this repository:
 
 ```bash
-git clone <repository_url>
+git clone https://github.com/WekesaKelvin/Ping-Pong-game.git
 ```
 Navigate into the repository folder:
 
