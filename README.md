@@ -18,7 +18,7 @@ A classic Pong game built with Python and Pygame. The objective is to outscore y
 - Pygame library
 
 ## How to Run
-Create a folder in Desktop or any where you prefer and clone the repository in that folder using this code:
+Create a folder in Desktop or any where you prefer and clone the repository in the terminal or command prompt inside that folder using this code:
 
 ```bash
 git clone https://github.com/WekesaKelvin/Ping-Pong-game.git
