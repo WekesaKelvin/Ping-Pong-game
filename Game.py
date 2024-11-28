@@ -32,7 +32,7 @@ game_over = False
 screen_width = 900
 screen_height = 600
 screen = pygame.display.set_mode((screen_width, screen_height))
-pygame.display.set_caption("Pong")
+pygame.display.set_caption("Ping Pong")
 
 # Defining Game elements
 ball = pygame.Rect(screen_width / 2 - 15, screen_height / 2 - 15, 30, 30)
@@ -366,8 +366,9 @@ def player_animation():
         player.bottom = screen_height
 
 def opponent_animation():
-    update_high_scores(computer_difficulty)  # Check and update high scores if needed
+
     if game_mode == "Singleplayer":
+        update_high_scores(computer_difficulty)  # Check and update high scores if needed
         # The computer tracks the ball based on the difficulty level
         reaction_speed = difficulty_speed_map[computer_difficulty]
 
