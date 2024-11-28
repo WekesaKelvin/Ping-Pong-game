@@ -2,46 +2,46 @@ import pygame
 import sys
 import time
 
-# initialising pygame module
+# initializing pygame module
 pygame.init()
 
 clock = pygame.time.Clock()
 
-# initialising game scores
+# initializing game scores
 player_score = 0
 opponent_score = 0
 game_font = pygame.font.Font("freesansbold.ttf", 32)
 
-# Set game over flag
+# Level variables
+current_level = 1  # Start at Level 1
 game_over = False
 
+
 def ball_animation():
-    global ball_speed_x
-    global ball_speed_y
-    global opponent_score
-    global player_score
+    global ball_speed_x, ball_speed_y, opponent_score, player_score
     # making ball move [speed controls]
     ball.x += ball_speed_x
     ball.y += ball_speed_y
 
-    # making the ball to bounce back
-    if (ball.top <= 0 or ball.bottom >= screen_height):
+    # making the ball bounce back when hitting the top or bottom
+    if ball.top <= 0 or ball.bottom >= screen_height:
         ball_speed_y *= -1
-    if (ball.right >= screen_width or ball.left <= 0):
 
+    # scoring logic, when ball passes a paddle
+    if ball.right >= screen_width or ball.left <= 0:
         if ball.left <= 0:
             player_score += 1
         elif ball.right >= screen_width:
             opponent_score += 1
         ball_restart()
 
-    if (ball.colliderect(player) or ball.colliderect(opponent) or player.colliderect(ball) or opponent.colliderect(
-            ball)):
+    # ball collision with paddles
+    if ball.colliderect(player) or ball.colliderect(opponent):
         ball_speed_x *= -1
 
 
 def player_animation():
-    # constrainting player location
+    # constraining the player's paddle within the screen
     if player.top <= 0:
         player.top = 0
     if player.bottom >= screen_height:
@@ -49,7 +49,7 @@ def player_animation():
 
 
 def opponent_animation():
-    # constrainting player location
+    # constraining the opponent's paddle within the screen
     if opponent.top <= 0:
         opponent.top = 0
     if opponent.bottom >= screen_height:
@@ -57,7 +57,18 @@ def opponent_animation():
 
 
 def ball_restart():
+    # reset the ball to the center
     ball.center = (screen_width / 2, screen_height / 2)
+
+
+def switch_to_level_2():
+    global player, opponent, current_level
+    # Change paddle size to make it shorter
+    player.height = 80
+    opponent.height = 80
+    # Update the level
+    current_level = 2
+    ball_restart()  # Restart the ball in the center
 
 
 # setting up the main window
@@ -65,7 +76,6 @@ screen_width = 800
 screen_height = 500
 
 screen = pygame.display.set_mode((screen_width, screen_height))
-##setting caption for pygame window
 pygame.display.set_caption("Pong")
 
 # Defining Game elements
@@ -79,9 +89,12 @@ ball_speed_y = 7
 # DEFINING PLAYER SPEED
 player_speed = 0
 opponent_speed = 0
-# creating game colours
+
+# creating game colors
 bg_color = pygame.Color("grey12")
 light_grey = (200, 200, 200)
+pink = (255, 105, 180)  # Pink color
+
 # starting game loop
 while True:
     # Handling input
@@ -109,6 +122,10 @@ while True:
             if event.key == pygame.K_w:
                 opponent_speed += 7
 
+    # Transition to Level 2
+    if current_level == 1 and (player_score == 10 or opponent_score == 10):
+        switch_to_level_2()
+
     ball_animation()
     # moving player up or down
     player.y += player_speed
@@ -119,10 +136,15 @@ while True:
 
     # setting up background color
     screen.fill(bg_color)
+
+    # Determine paddle and ball colors based on level
+    paddle_color = light_grey if current_level == 1 else pink
+    ball_color = light_grey if current_level == 1 else pink
+
     # drawing game elements
-    pygame.draw.rect(screen, light_grey, player)
-    pygame.draw.rect(screen, light_grey, opponent)
-    pygame.draw.ellipse(screen, light_grey, ball)
+    pygame.draw.rect(screen, paddle_color, player)
+    pygame.draw.rect(screen, paddle_color, opponent)
+    pygame.draw.ellipse(screen, ball_color, ball)
     pygame.draw.aaline(screen, light_grey, (screen_width / 2, 0), (screen_width / 2, screen_height))
 
     # displaying scores
@@ -132,8 +154,12 @@ while True:
     opponent_text = game_font.render(f"{opponent_score}", False, light_grey)
     screen.blit(opponent_text, (360, 8))
 
+    # Display current level
+    level_text = game_font.render(f"Level {current_level}", False, light_grey)
+    screen.blit(level_text, (screen_width / 2 - 60, 30))
+
     # Check if game is over
-    if player_score == 15:
+    if player_score == 20:
         game_over_text = game_font.render("Player Wins!", False, light_grey)
         screen.blit(game_over_text, (screen_width / 2 - 100, screen_height / 2))
         pygame.display.flip()
@@ -141,7 +167,7 @@ while True:
         pygame.quit()
         sys.exit()
 
-    elif opponent_score == 15:
+    elif opponent_score == 20:
         game_over_text = game_font.render("Opponent Wins!", False, light_grey)
         screen.blit(game_over_text, (screen_width / 2 - 100, screen_height / 2))
         pygame.display.flip()

@@ -17,15 +17,16 @@ A classic Pong game built with Python and Pygame. The objective is to outscore y
 - Python 3.6 or higher
 - Pygame library
 
-Install Pygame by running:
-```bash
-pip install pygame
-```
 ## How to Run
-Clone this repository:
+Create a folder in Desktop or any where you prefer and clone the repository in the terminal or command prompt inside that folder using this code:
 
 ```bash
 git clone https://github.com/WekesaKelvin/Ping-Pong-game.git
+```
+After Cloning the repository Install pygame by running:
+
+```bash
+pip install pygame
 ```
 Navigate into the repository folder:
 
@@ -48,7 +49,7 @@ python ping_pong_game.py
   - Move Down: Press the `S` key
 
 ## Gameplay
-The objective of the game is to reach a score of 10 before your opponent. Each time the ball passes a paddle, the other player scores a point.
+The objective of the game is to reach a score of 15 before your opponent. Each time the ball passes a paddle, the other player scores a point.
 
 ## File Structure
 ping_pong_game.py - Main game code including game setup, event handling, animations, and main game loop.
