@@ -73,7 +73,15 @@ Player wins or loses a match.
 
 Single Player Mode: Aim for the highest score possible against the computer.
 
-Multiplayer Mode: The first player to score 10 points wins the match.
+Multiplayer Mode: Achieve the highest points within **20 seconds**. If you reach the highest score before the timer ends, you win immediately.
+
+**Settings Section**
+- Customize the game settings to adjust difficulty:
+  - **Ball Speed**: Increase or decrease the speed of the ball.
+  - **Ball Size**: Adjust the size of the ball for a personalized challenge.
+  - **Paddle Speed**: Control how fast the paddles move.
+  - **Paddle Size**: Modify the paddle size for easier or more challenging gameplay.
+  - **Match Type**: Select specific match configurations to suit your skill level.
 
 ## File Structure
 Game.py - Main game code including game setup, event handling, animations, and main game loop.
