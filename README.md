@@ -48,7 +48,9 @@ Players in single-player mode can track their highest scores against the compute
 
 ## Difficulty Levels
 Easy: Slower ball speed and larger paddles for a relaxed gameplay experience.
+
 Medium: A balanced challenge with moderate ball speed and paddle size.
+
 Hard: High-intensity gameplay with faster ball speeds and smaller paddles for seasoned players.
 
 ## Sound Effects
@@ -72,4 +74,4 @@ Single Player Mode: Aim for the highest score possible against the computer.
 Multiplayer Mode: The first player to score 10 points wins the match.
 
 ## File Structure
-ping_pong_game.py - Main game code including game setup, event handling, animations, and main game loop.
+Game.py - Main game code including game setup, event handling, animations, and main game loop.
