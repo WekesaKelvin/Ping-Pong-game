@@ -41,6 +41,7 @@ python ping_pong_game.py
 ## Game Features
 ## Game Modes
 Single Player: Play against the computer, aiming to beat its AI at varying difficulty levels.
+
 Multiplayer: Compete against another player in a race to 10 points to claim victory.
 
 ## Score Tracking
@@ -71,6 +72,7 @@ Player wins or loses a match.
 ## Gameplay Win Conditions
 
 Single Player Mode: Aim for the highest score possible against the computer.
+
 Multiplayer Mode: The first player to score 10 points wins the match.
 
 ## File Structure
