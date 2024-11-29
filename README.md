@@ -38,8 +38,26 @@ Run the game by executing the following command in your terminal:
 ```bash
 python ping_pong_game.py
 ```
-## Game Controls
+## Game Features
+## Game Modes
+Single Player: Play against the computer, aiming to beat its AI at varying difficulty levels.
+Multiplayer: Compete against another player in a race to 10 points to claim victory.
 
+## Score Tracking
+Players in single-player mode can track their highest scores against the computer.
+
+## Difficulty Levels
+Easy: Slower ball speed and larger paddles for a relaxed gameplay experience.
+Medium: A balanced challenge with moderate ball speed and paddle size.
+Hard: High-intensity gameplay with faster ball speeds and smaller paddles for seasoned players.
+
+## Sound Effects
+Dynamic sound effects enhance gameplay:
+Ball hits the wall.
+Ball is hit by a paddle.
+Player wins or loses a match.
+
+## Game Controls
 - **Player (Right Paddle)**  
   - Move Up: Press the `UP Arrow` key
   - Move Down: Press the `DOWN Arrow` key
@@ -48,8 +66,10 @@ python ping_pong_game.py
   - Move Up: Press the `W` key
   - Move Down: Press the `S` key
 
-## Gameplay
-The objective of the game is to reach a score of 15 before your opponent. Each time the ball passes a paddle, the other player scores a point.
+## Gameplay Win Conditions
+
+Single Player Mode: Aim for the highest score possible against the computer.
+Multiplayer Mode: The first player to score 10 points wins the match.
 
 ## File Structure
 ping_pong_game.py - Main game code including game setup, event handling, animations, and main game loop.
