@@ -5,9 +5,12 @@ A classic Pong game built with Python and Pygame. The objective is to outscore y
 ## Table of Contents
 1. [Installation](#installation)
 2. [How to Run](#how-to-run)
-3. [Game Controls](#game-controls)
-4. [Gameplay](#gameplay)
-5. [File Structure](#file-structure)
+3. [Game Modes](#game-modes)
+4. [Sound Effects](#sound-effects)
+5. [Game Controls](#game-controls)
+6. [Gameplay Win Conditions](#gameplay-win-conditions)
+7. [Settings Section](#settings-section)
+8. [File Structure](#file-structure)
 
 ---
 
@@ -38,7 +41,6 @@ Run the game by executing the following command in your terminal:
 ```bash
 python ping_pong_game.py
 ```
-## Game Features
 ## Game Modes
 Single Player: Play against the computer, aiming to beat its AI at varying difficulty levels.
 
