@@ -9,8 +9,7 @@ A classic Pong game built with Python and Pygame. The objective is to outscore y
 4. [Sound Effects](#sound-effects)
 5. [Game Controls](#game-controls)
 6. [Gameplay Win Conditions](#gameplay-win-conditions)
-7. [Settings Section](#settings-section)
-8. [File Structure](#file-structure)
+7. [File Structure](#file-structure)
 
 ---
 
@@ -46,17 +45,17 @@ Single Player: Play against the computer, aiming to beat its AI at varying diffi
 
 Multiplayer: Compete against another player in a race to 10 points to claim victory.
 
-## Score Tracking
+### Score Tracking
 Players in single-player mode can track their highest scores against the computer.
 
-## Difficulty Levels
+### Difficulty Levels
 Easy: Slower ball speed and larger paddles for a relaxed gameplay experience.
 
 Medium: A balanced challenge with moderate ball speed and paddle size.
 
 Hard: High-intensity gameplay with faster ball speeds and smaller paddles for seasoned players.
 
-## Sound Effects
+### Sound Effects
 Dynamic sound effects enhance gameplay:
 Ball hits the wall.
 Ball is hit by a paddle.
